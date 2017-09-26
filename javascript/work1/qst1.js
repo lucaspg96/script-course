@@ -8,4 +8,4 @@ class Sorter{
 
 var sorter = new Sorter();
 
-console.log(sorter.sort([1,5,0,-3]))
+console.log(sorter.sort([1,5,0,-3],true))
