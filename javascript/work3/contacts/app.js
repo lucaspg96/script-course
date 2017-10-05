@@ -1,4 +1,5 @@
-var app = require('./app_config.js');
+//var app = require('./app_http_config.js');
+var app = require('./app_express_config.js');
 var url = require('url')
 var controller = require('./controller.js');
 
@@ -14,7 +15,7 @@ function getJSONData(req,res,callback){
 	        callback(JSON.parse(info))
 	    }
 	    catch(err){
-	    	res.end({"err":err.toString()});
+	    	res.end(err.toString());
 	    }
     });
 }

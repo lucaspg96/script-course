@@ -82,10 +82,10 @@ function updateContact(contact,callback){
 			callback(err)
 		}
 		else{
-			old = data[contact["id"]]
+			old = data[contact["_id"]]
 
 			for(var key in contact){
-				if(key!="id")
+				if(key!="_id")
 					old[key] = contact[key]
 			}
 

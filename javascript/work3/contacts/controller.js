@@ -1,4 +1,5 @@
-var db = require('./db_config.js');
+var db = require('./db_file_config.js');
+// var db = require('./db_mongo_config.js');
 
 exports.list = function(callback){
 

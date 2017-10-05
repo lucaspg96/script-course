@@ -77,7 +77,7 @@ db.once('open',function(){
 			else{
 
 				for(var key in data){
-					if(key!="id")
+					if(key!="_id")
 						contact[key] = data[key]
 				}
 
