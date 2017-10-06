@@ -51,11 +51,14 @@ function addContact(contact,callback){
 		}
 		else{
 			if(validadeContact(contact)){
+				var id = new Date().getTime()
 				data[new Date().getTime()] = {
+					"_id":id,
 					name: contact.name,
 					address: contact.address,
 					phone: contact.phone,
-					email: contact.email
+					email: contact.email,
+					image: "uploads/"+id
 				}
 				
 
@@ -64,7 +67,7 @@ function addContact(contact,callback){
 						callback(err)
 					}
 					else{
-						callback(false,contact)
+						callback(false,data[id])
 					}
 				})
 			}

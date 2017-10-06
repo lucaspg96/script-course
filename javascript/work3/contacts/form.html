@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title></title>
+   <link rel="stylesheet" href="">
+</head>
+<body>
+   
+  <!--  Por que usar multipart/form-data? Para envio de arquivos. O padrão é application/x-www-form-urlencoding -->
+   
+   <form action="http://localhost:3000/contact" method="post" enctype="multipart/form-data">
+         <fieldset>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" placeholder="Entre com seu nome completo" />
+            <br />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Entre com seu endereço de e-mail" />
+            <br />
+            <label for="description">Endereço:</label>
+            <textarea id="description" name="address" placeholder="Entre com um pequeno texto sobre você"></textarea>
+            <br />
+            <label for="description">Telefone:</label>
+            <textarea id="description" name="phone" placeholder="Entre com o telefone"></textarea>
+            <br />
+
+            <br />
+            <label for="profilepic">Imagem do Perfil:</label>
+            <input type="file" id="profilepic" name="file" />
+            <br />
+            <input type="submit" value="Criar Perfil" />
+         </fieldset>
+      </form>
+</body>
+</html>

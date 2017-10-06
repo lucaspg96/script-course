@@ -54,12 +54,15 @@ db.once('open',function(){
 				name: contact.name,
 				address: contact.address,
 				phone: contact.phone,
-				email: contact.email
+				email: contact.email,
+				image: contact.file
 			}).save(function(err,contact){
 				if(err){
 					callback(err)
 				}
 				else{
+					contact.image = "uploads/"+contact["_id"].toString()
+					contact.save(contact,function(){})
 					callback(false,contact)
 				}
 			})
