@@ -1,0 +1,47 @@
+<!-- Layout retirado de: https://codepen.io/tusharbandal/pen/mdujc -->
+<!doctype html>  
+<html lang="en"> 
+ 
+    <head>
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/docs/assets/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <div id="tic-tac-toe">
+            <div class="span3 new_span">
+                <div class="row">
+                    <h1 class="span3">Tic Tac Toe</h1>
+                    <div class="span3">
+                        <div class="input-prepend input-append">
+                            <span id = "X" class="add-on win_text">O won</span><strong id="X_win" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
+                        </div>
+                        <div class="input-prepend input-append">
+                            <span id = "O" class="add-on win_text">X won</span><strong id="O_win" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
+                        </div>
+                          
+                    </div>
+                </div>
+
+                <ul class="row" id="game">
+                    <li id="00" class="btn span1"> </li>
+                    <li id="01" class="btn span1"> </li>
+                    <li id="02" class="btn span1"> </li>
+                    <li id="10" class="btn span1"> </li>
+                    <li id="11" class="btn span1"> </li>
+                    <li id="12" class="btn span1"> </li>
+                    <li id="20" class="btn span1"> </li>
+                    <li id="21" class="btn span1"> </li>
+                    <li id="22" class="btn span1"> </li>
+                </ul>
+
+                <div class="clr">&nbsp;</div>
+
+            </div>
+        </div>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>   
+        <script type="text/javascript" src="js/main.js"></script>         
+    </body>
+</html>  

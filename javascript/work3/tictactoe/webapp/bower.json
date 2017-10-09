@@ -1,0 +1,21 @@
+{
+  "name": "tictactoe",
+  "description": "",
+  "main": "game.js",
+  "authors": [
+    "Lucas Peres <lucaspg96@live.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lucaspg96/script-course",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "2.3.2"
+  }
+}
