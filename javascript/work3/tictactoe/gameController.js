@@ -40,15 +40,18 @@ module.exports = class GameController{
 				try{
 					var win = board.play(data.x,data.y,data.c);
 					otherPlayer.socket.emit("play",data);
-					plays++
+					plays++;
 					if(win){
 						var msg = {
 							"msg": "Player "+player.name+" won the match!",
 							"player": player.name
 						}
 						console.log(msg)
-						player.socket.emit("end",msg);
-						otherPlayer.socket.emit("end",msg);
+						setTimeout(function(){
+							player.socket.emit("end",msg);
+							otherPlayer.socket.emit("end",msg);
+						},500)
+						
 						board = new game();
 						plays = 0;
 					}

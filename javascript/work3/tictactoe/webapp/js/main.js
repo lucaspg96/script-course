@@ -7,6 +7,7 @@ var myChar
 var oppontentChar
 var name
 var lastPlay
+var tooglePlayer
 
 $(".btn").click(function(){
 	if(!isWaiting && $(this).text()==" "){
@@ -21,6 +22,7 @@ $(".btn").click(function(){
 		lastPlay = {x:x,y:y,c:myChar}
 		socket.emit("play",lastPlay)
 		isWaiting = true
+		tooglePlayer()
 	}
 	else{
 		if(isWaiting)
@@ -51,6 +53,15 @@ socket.on('setChar',function(data){
 
 	$("#X").show()
 	$("#O").show()
+	$("#player").text(data.player1)
+
+	tooglePlayer = function(){
+		console.log($("#player").text(),data)
+		if($("#player").text()==data.player1)
+			$("#player").text(data.player2)
+		else
+			$("#player").text(data.player1)
+	}
 });
 
 socket.on("play",function(data){
@@ -58,6 +69,7 @@ socket.on("play",function(data){
 	var id = "#"+data.x.toString()+data.y.toString()
 	$(id).text(data.c)
 	isWaiting = false
+	tooglePlayer()
 })
 
 socket.on("end",function(data){
@@ -73,13 +85,16 @@ socket.on("end",function(data){
 	
 	if(confirm("Keep playing?"))
 		clearBoard()
-	else
+	else{
 		socket.disconnect()
+		$("#player").hide()
+	}
 })
 
 socket.on("err",function(msg){
 	alert(msg)
 	console.log(msg)
+	tooglePlayer()
 })
 
 socket.on("disconnect",function(){
