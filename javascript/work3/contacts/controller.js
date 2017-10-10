@@ -1,4 +1,7 @@
+//file storage module
 //var db = require('./db_file_config.js');
+
+//mongo storage module
 var db = require('./db_mongo_config.js');
 
 exports.list = function(callback){

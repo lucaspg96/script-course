@@ -1,10 +1,16 @@
+//pure http server
 //var app = require('./app_http_config.js');
+//express server (without body-parser)
 var app = require('./app_express_config.js');
-var url = require('url')
-var fs = require('fs')
+
+var url = require('url');
+var fs = require('fs');
 var formidable = require("formidable");
+
+//application controller
 var controller = require('./controller.js');
 
+//this function receive the data from a pure JSON request
 // function getJSONData(req,res,callback){
 // 	var info = ""
 // 	req.on('data', function (data) {
@@ -22,6 +28,7 @@ var controller = require('./controller.js');
 //     });
 // }
 
+//this function receives data from a form-data/multipart request
 function getJSONData(req, res,callback) {
     //Store the data from the fields in your data store.
     //The data store could be a file or database or any other store based
@@ -51,15 +58,17 @@ function getJSONData(req, res,callback) {
     });
 }
 
+//test route
 app.get('/', function(req, res){
 	res.end('Servidor On!');
 });
 
 //---------------------------------------------------
-
+//get (a) contact
 app.get('/contact', function(req, res){
 	var q = url.parse(req.url, true).query;
 	
+	//if an id is sent, get one contact
 	if(q["id"]){
 		var id = q["id"];
 
@@ -67,7 +76,7 @@ app.get('/contact', function(req, res){
 			res.end(JSON.stringify(resp));
 		});
 	}
-
+	//else, get all contacts
 	else{
 		controller.list(function(resp){
 			res.end(JSON.stringify(resp));
@@ -77,12 +86,14 @@ app.get('/contact', function(req, res){
 });
 
 //---------------------------------------------------
-
+//add a new contact
 app.post('/contact', function(req, res){
 
 	getJSONData(req,res,function(data){
+		//get the file original name
 		data.file = "uploads/"+data.file.path.split('/').pop()
 		controller.save(data,function(resp){
+			//take the contact's id and rename the file
 			fs.rename(data.file, resp.image, function(err) {
 			    if(err){}
 			    else{
@@ -96,7 +107,7 @@ app.post('/contact', function(req, res){
 });
 
 //---------------------------------------------------
-
+//update the name/address/phone/email of an contact
 app.put('/contact', function(req, res){
 
 	getJSONData(req,res,function(data){
@@ -118,7 +129,7 @@ app.put('/contact', function(req, res){
 });
 
 //---------------------------------------------------
-
+//remove a contact by it's id
 app.delete('/contact', function(req, res){
 		
 	getJSONData(req,res,function(data){
