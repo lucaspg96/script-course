@@ -1,0 +1,40 @@
+<%= form_with(model: carro, local: true) do |form| %>
+  <% if carro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carro.errors.count, "error") %> prohibited this carro from being saved:</h2>
+
+      <ul>
+      <% carro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :placa %>
+    <%= form.text_field :placa, id: :carro_placa %>
+  </div>
+
+  <div class="field">
+    <%# form.label :tipo %> 
+    <!-- <%= form.number_field :tipo, id: :carro_tipo %> -->
+    <h4>Tipo do carro:</h4>
+
+    <%= form.radio_button :tipo, 1 , :style => "float:left"%>
+    <%= label_tag(:tipo_1, "Urbano")%><br>
+    <%= form.radio_button :tipo, 2 , :style => "float:left"%>
+    <%= label_tag(:tipo_2, "Motocross")%><br>
+    <%= form.radio_button :tipo, 3 , :style => "float:left"%>
+    <%= label_tag(:tipo_3, "Luxo")%><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :ano %>
+    <%= form.number_field :ano, id: :carro_ano , input_html:{ min: '1950', max: '2017' } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

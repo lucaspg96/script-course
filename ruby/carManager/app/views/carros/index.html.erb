@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Placa</th>
+      <th>Tipo</th>
+      <th>Ano</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carros.each do |carro| %>
+      <tr>
+        <td><%= carro.placa %></td>
+        <!-- <td><%= carro.tipo %></td> -->
+        <td><%= ["Urbano","Motocross","Luxo"][carro.tipo-1] %></td>
+        <td><%= carro.ano %></td>
+        <td><%= link_to 'Show', carro %></td>
+        <td><%= link_to 'Edit', edit_carro_path(carro) %></td>
+        <td><%= link_to 'Destroy', carro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Carro', new_carro_path %>
